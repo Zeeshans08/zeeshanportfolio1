@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Projects | Zeeshan Shah</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -33,10 +33,306 @@
             <div class="projects-filter">
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="javascript">JavaScript</button>
-                <button class="filter-btn" data-filter="react">React</button>
                 <button class="filter-btn" data-filter="htmlcss">HTML/CSS</button>
             </div>
             
+            <!-- Your EXACT Weather App Starts Here -->
+            <div class="weather-app-standalone">
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Weather App Pro</title>
+                    <style>
+                        :root {
+                            --sunny: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+                            --rainy: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+                            --cloudy: linear-gradient(135deg, #BDC3CB 0%, #7E858D 100%);
+                        }
+
+                        * {
+                            box-sizing: border-box;
+                            margin: 0;
+                            padding: 0;
+                            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                        }
+
+                        .weather-app-body {
+                            min-height: 50vh;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            background: var(--cloudy);
+                            transition: background 0.5s ease;
+                            padding: 20px;
+                            margin: 20px 0;
+                            border-radius: 12px;
+                        }
+
+                        .weather-container {
+                            width: 100%;
+                            max-width: 400px;
+                            background: rgba(255, 255, 255, 0.9);
+                            border-radius: 20px;
+                            padding: 30px;
+                            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                            text-align: center;
+                            position: relative;
+                            overflow: hidden;
+                        }
+                         h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .search-box {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 16px;
+            outline: none;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 0 30px 30px 0;
+            background: #4a6bff;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: #3a5bef;
+        }
+
+        .weather-info {
+            margin-top: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .weather-info.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .temp {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin: 10px 0;
+            position: relative;
+            display: inline-block;
+        }
+
+        .temp::after {
+            content: '°C';
+            position: absolute;
+            top: 5px;
+            font-size: 1.5rem;
+        }
+
+        .description {
+            font-size: 1.2rem;
+            text-transform: capitalize;
+            margin-bottom: 20px;
+        }
+
+        .details {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .detail {
+            text-align: center;
+        }
+
+        .detail i {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .weather-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: all 0.5s ease;
+            transform: scale(0.8);
+            opacity: 0;
+        }
+
+        .weather-icon.show {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        /* Loading Spinner */
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #4a6bff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 30px auto;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Weather-specific backgrounds */
+        body.sunny { background: var(--sunny); }
+        body.rainy { background: var(--rainy); }
+        body.cloudy { background: var(--cloudy); }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .weather-container {
+                padding: 20px;
+            }
+            
+            .temp {
+                font-size: 2.5rem;
+            }
+        }
+        /* Fix footer positioning */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.project-container {
+  margin-bottom: 60px; /* Space before footer */
+}
+
+footer {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  background: #111e2c; /* Match your theme */
+  position: relative;
+  bottom: 0;
+  padding: 2rem;
+    margin-top: 3rem;
+}
+
+                        /* ... (REST OF YOUR EXACT WEATHER APP CSS) ... */
+                    </style>
+                </head>
+                <body class="cloudy weather-app-body">
+                    <div class="weather-container">
+                        <h1>Weather Forecast</h1>
+                        
+                        <div class="search-box">
+                            <input type="text" id="city-input" placeholder="Enter city name...">
+                            <button id="search-btn">Search</button>
+                        </div>
+                        
+                        <div class="loader" id="loader"></div>
+                        
+                        <div class="weather-info" id="weather-info">
+                            <div class="weather-icon" id="weather-icon"></div>
+                            <h2 class="city" id="city">-</h2>
+                            <div class="temp" id="temp">-</div>
+                            <div class="description" id="description">-</div>
+                            
+                            <div class="details">
+                                <div class="detail">
+                                    <i>💧</i>
+                                    <span id="humidity">-</span>%
+                                </div>
+                                <div class="detail">
+                                    <i>💨</i>
+                                    <span id="wind">-</span> m/s
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        const apiKey = "f00c38e0279b7bc85480c3fe775d518c";
+                        const loader = document.getElementById('loader');
+                        const weatherInfo = document.getElementById('weather-info');
+                        const weatherIcon = document.getElementById('weather-icon');
+
+                        document.getElementById('search-btn').addEventListener('click', () => {
+                            const city = document.getElementById('city-input').value.trim();
+                            if (city) getWeather(city);
+                        });
+
+                        async function getWeather(city) {
+                            // Show loader
+                            loader.style.display = 'block';
+                            weatherInfo.classList.remove('show');
+                            weatherIcon.classList.remove('show');
+                            
+                            try {
+                                const response = await fetch(
+                                    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+                                );
+                                
+                                if (!response.ok) throw new Error('City not found');
+                                
+                                const data = await response.json();
+                                
+                                // Update UI
+                                document.getElementById('city').textContent = `${data.name}, ${data.sys.country}`;
+                                document.getElementById('temp').textContent = Math.round(data.main.temp);
+                                document.getElementById('description').textContent = data.weather[0].description;
+                                document.getElementById('humidity').textContent = data.main.humidity;
+                                document.getElementById('wind').textContent = data.wind.speed;
+                                
+                                // Set weather icon
+                                const iconCode = data.weather[0].icon;
+                                weatherIcon.style.backgroundImage = `url(https://openweathermap.org/img/wn/${iconCode}@2x.png)`;
+                                
+                                // Set background based on weather
+                                const weatherMain = data.weather[0].main.toLowerCase();
+                                document.querySelector('.weather-app-body').className = 
+                                    `weather-app-body ${weatherMain.includes('rain') ? 'rainy' : 
+                                    weatherMain.includes('clear') ? 'sunny' : 'cloudy'}`;
+                                
+                                // Show weather info with animation
+                                setTimeout(() => {
+                                    loader.style.display = 'none';
+                                    weatherInfo.classList.add('show');
+                                    weatherIcon.classList.add('show');
+                                }, 500);
+                                
+                            } catch (error) {
+                                loader.style.display = 'none';
+                                alert(error.message);
+                            }
+                        }
+                    </script>
+                </body>
+                </html>
+            </div>
+            <!-- Your EXACT Weather App Ends Here -->
             
         </section>
     </main>
@@ -45,7 +341,7 @@
         <p>&copy; 2025 Zeeshan Shah. All rights reserved.</p>
     </footer>
 
-    <script src="project.js"></script>
-    <script src="main.js"></script>
+    <script src="js/projects.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
